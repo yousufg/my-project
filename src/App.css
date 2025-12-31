@@ -1,0 +1,331 @@
+/* =====================
+   RESET & VARIABLES
+===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+:root {
+  --primary: #014a24;
+  --primary-light: #026b35;
+  --accent: #f4b400;
+  --dark: #1b1b1b;
+  --gray: #f3f5f7;
+  --text: #444;
+}
+
+#root {
+  width: 100%;
+}
+
+/* =====================
+   COMMON
+===================== */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section {
+  padding: 10px 0;
+}
+
+.bg-light {
+  background: var(--gray);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  color: var(--primary);
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+/* =====================
+   BUTTONS
+===================== */
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 10px 22px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-outline:hover,
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* =====================
+   NAVBAR
+===================== */
+.navbar {
+  background: white;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.navbar nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* =====================
+   HERO
+===================== */
+.hero {
+  background: linear-gradient(
+    to right,
+    var(--primary),
+    var(--primary-light)
+  );
+  color: white;
+  text-align: center;
+  padding: 90px 20px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  opacity: 0.9;
+  font-size: 18px;
+}
+
+.hero-actions {
+  margin-top: 30px;
+}
+
+.hero-secondary {
+  margin-top: 15px;
+}
+
+.hero-secondary a {
+  color: #fff;
+  font-weight: 600;
+  margin-left: 5px;
+  text-decoration: underline;
+}
+
+/* =====================
+   STATS
+===================== */
+.stats {
+  background: white;
+  padding: 50px 0;
+}
+
+.stat-card {
+  text-align: center;
+}
+
+.stat-card h2 {
+  color: var(--primary);
+  font-size: 36px;
+}
+
+.stat-card p {
+  color: var(--text);
+}
+
+/* =====================
+   TAGS (LOCATIONS)
+===================== */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.tag {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+/* =====================
+   CARDS
+===================== */
+.card,
+.category-card,
+.offer-card,
+.step-card {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.card h3,
+.offer-card h3 {
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+/* =====================
+   HOW IT WORKS
+===================== */
+.step-card span {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  line-height: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* =====================
+   TESTIMONIALS
+===================== */
+.testimonial {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.testimonial p {
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.testimonial strong {
+  color: var(--primary);
+  display: block;
+}
+
+/* =====================
+   DISCOUNTS
+===================== */
+.offer-card p {
+  margin-bottom: 15px;
+  color: var(--text);
+}
+
+/* =====================
+   APP PROMO
+===================== */
+.app-promo {
+  background: var(--primary);
+  color: white;
+  padding: 70px 0;
+}
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.store-buttons button {
+  margin-right: 10px;
+}
+
+.qr-placeholder {
+  background: white;
+  color: var(--primary);
+  padding: 50px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* =====================
+   FOOTER
+===================== */
+.footer {
+  background: #0f2f1f;
+  color: white;
+  padding: 60px 0 20px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.footer h4 {
+  margin-bottom: 15px;
+}
+
+.footer ul {
+  list-style: none;
+}
+
+.footer ul li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .promo-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .navbar nav {
+    display: none;
+  }
+}
