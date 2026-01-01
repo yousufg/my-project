@@ -1,84 +1,216 @@
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
+
+const testimonials = [
+  {
+    name: "Ariful Islam",
+    role: "Engineer",
+    location: "Khilkhet, Dhaka",
+    text: "They are dependable and supportive at all times. They really help me in finding the best tutor. This platform has gained my 100% satisfaction. About their service, I'll recommend everyone.",
+    img: "https://cdn-caretutors.sgp1.cdn.digitaloceanspaces.com/assets/upload/testimonial_user_image/original/ArifulIslam, Engineer _parent_1666774318672.jpeg"
+  },
+  {
+    name: "Zakaria Habib",
+    role: "Businessman",
+    location: "Anderkilla, Chattogram",
+    text: "I found this platform very safe & secure. I've already got three tutors by using this platform and feeling like they are being part of our family. Best wishes to the Caretutors family.",
+    img: "https://cdn-caretutors.sgp1.cdn.digitaloceanspaces.com/assets/upload/testimonial_user_image/original/ZakariaHabib, Businessman_parent_1677499278156.jpeg"
+  },
+  {
+    name: "Afsana Akter Rupa",
+    role: "Service Holder",
+    location: "Shahjadpur, Dhaka",
+    text: "My experience with Caretutors has always been very good. Through this platform I found good tutors according to my needs. Thanks to Caretutors.",
+    img: "https://cdn-caretutors.sgp1.cdn.digitaloceanspaces.com/assets/upload/testimonial_user_image/original/AfsanaAkter Rupa, Private Service Holder_parent_1689503452095.jpeg"
+  },
+  {
+    name: "Md. Ashrafuzzaman",
+    role: "Service Holder",
+    location: "Khilkhet, Dhaka",
+    text: "I really appreciate the initiative taken by Caretutors. I'm currently going with two tutors whom I found through Caretutors. Both of them are caring & sincere. Besides, Birthday greetings from Caretutors made us so happy. I wish their successful effort.",
+    img: "https://cdn-caretutors.sgp1.cdn.digitaloceanspaces.com/assets/upload/testimonial_user_image/original/Md.Ashrafuzzaman, Government Service Holder_parent_1689503381032.jpeg"
+  }
+];
+
+const QuoteIcon = ({ size = "40px", color = "#0675c1" }) => (
+  <svg 
+    stroke="currentColor" 
+    fill="currentColor" 
+    strokeWidth="0" 
+    viewBox="0 0 512 512" 
+    height="1em" 
+    width="1em" 
+    xmlns="http://www.w3.org/2000/svg"
+    style={{ 
+      width: size, 
+      height: size,
+      color: color
+    }}
+  >
+    <path d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"></path>
+  </svg>
+);
 
 export default function Testimonials() {
-  const testimonials = [
-    {
-      name: "Ariful Islam",
-      role: "Engineer",
-      text: "Dependable and supportive platform. Highly recommended for one-on-one lessons.",
-      img: "https://cdn-caretutors.sgp1.cdn.digitaloceanspaces.com/assets/upload/testimonial_user_image/original/LanaKhan,%20Programme%20Manager,%20ATN%20Bangla_parent_1679915333018.jpeg"
-    },
-    {
-      name: "Zakaria Habib",
-      role: "Businessman",
-      text: "Safe and secure tutoring solution. Highly recommended for one-on-one lessons.",
-      img: "https://cdn-caretutors.sgp1.cdn.digitaloceanspaces.com/assets/upload/testimonial_user_image/original/LanaKhan,%20Programme%20Manager,%20ATN%20Bangla_parent_1679915333018.jpeg"
-    },
-    {
-      name: "Nafisa Rahman",
-      role: "Student",
-      text: "Highly recommended for one-on-one lessons. Excellent tutors and platform support.",
-      img: "https://cdn-caretutors.sgp1.cdn.digitaloceanspaces.com/assets/upload/testimonial_user_image/original/LanaKhan,%20Programme%20Manager,%20ATN%20Bangla_parent_1679915333018.jpeg"
-    }
-  ];
-
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 2,      // Show 2 slides at a time
-  slidesToScroll: 1,    // Scroll only 1 slide per scroll
-  autoplay: true,
-  autoplaySpeed: 5000,
-  arrows: false,
-  adaptiveHeight: true,
-  responsive: [         // Optional: make it responsive for mobile
-    {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 1, // Show 1 slide on smaller screens
-        slidesToScroll: 1
-      }
-    }
-  ]
-};
-
-
+  const swiperRef = useRef(null);
+  const primaryColor = "#0675c1";
+  
   return (
-    <section className="section bg-gray-50 py-16">
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-10">What People Say</h2>
+    <section className="section bg-light">
+      <div className="container">
+        <h2 className="section-title text-center mb-5">What People Say</h2>
+        
+        <div className="position-relative">
+          <Swiper
+            ref={swiperRef}
+            modules={[Autoplay, Pagination]}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true
+            }}
+            speed={600}
+            loop={true}
+            slidesPerView={1}
+            spaceBetween={30}
+            centeredSlides={true}
+            pagination={{
+              clickable: true,
+              dynamicBullets: true
+            }}
+            className="testimonials-swiper"
+          >
+            {testimonials.map((testimonial, index) => (
+              <SwiperSlide key={index}>
+                <div className="row justify-content-center">
+                  <div className="col-12 col-md-10 col-lg-8 col-xl-6">
+                    <div className="card testimonial-card border-0 shadow-lg">
+                      <div className="card-body p-4 p-md-5">
+                        {/* User Info Section */}
+                        <div className="row align-items-center mb-4">
+                          <div className="col-12 col-md-4 text-center mb-4 mb-md-0">
+                            <div className="position-relative d-inline-block">
+                              <img
+                                src={testimonial.img}
+                                alt={testimonial.name}
+                                className="rounded-circle img-fluid"
+                                style={{
+                                  width: "120px",
+                                  height: "120px",
+                                  objectFit: "cover",
+                                  border: `4px solid ${primaryColor}`
+                                }}
+                                loading="lazy"
+                              />
+                            </div>
+                          </div>
+                          
+                          <div className="col-12 col-md-8 text-center text-md-start">
+                            <h3 className="h4 fw-bold mb-2 text-primary">
+                              {testimonial.name}
+                            </h3>
+                            <p className="mb-2 text-primary">
+                              {testimonial.role}
+                            </p>
+                            <p className="mb-0 text-muted">
+                              <i className="fas fa-map-marker-alt me-2"></i>
+                              {testimonial.location}
+                            </p>
+                          </div>
+                        </div>
+                        
+                        {/* Quote Icon */}
+                        <div className="text-center mb-4">
+                          <QuoteIcon size="40px" color={primaryColor} />
+                        </div>
+                        
+                        {/* Testimonial Text */}
+                        <div className="mb-4">
+                          <p className="text-center px-0 px-md-3 fst-italic fs-5">
+                            "{testimonial.text}"
+                          </p>
+                        </div>
+                        
+                        {/* Rating */}
+                        <div className="text-center">
+                          <div className="mb-2">
+                            {[...Array(5)].map((_, i) => (
+                              <i 
+                                key={i}
+                                className="fas fa-star mx-1 text-warning"
+                                style={{ fontSize: "1.2rem" }}
+                              ></i>
+                            ))}
+                          </div>
+                          <span className="text-muted">
+                            Verified Customer • 5.0 Rating
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          
+          {/* Desktop Navigation Arrows */}
+          <div className="d-none d-lg-flex align-items-center justify-content-between position-absolute top-50 start-0 end-0"
+            style={{ 
+              height: "0",
+              zIndex: 10,
+              transform: "translateY(-50%)"
+            }}
+          >
+            <button
+              className="btn btn-light rounded-circle shadow-sm border-0"
+              style={{
+                width: "50px",
+                height: "50px"
+              }}
+              onClick={() => swiperRef.current?.swiper?.slidePrev()}
+            >
+              <i className="fas fa-chevron-left"></i>
+            </button>
+            <button
+              className="btn btn-light rounded-circle shadow-sm border-0"
+              style={{
+                width: "50px",
+                height: "50px"
+              }}
+              onClick={() => swiperRef.current?.swiper?.slideNext()}
+            >
+              <i className="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
 
-        <Slider {...settings}>
-          {testimonials.map((t, i) => (
-            <div key={i} className="px-4">
-              <div className="testimonial-card bg-white rounded-2xl shadow-lg p-8 text-center max-w-md mx-auto flex flex-col items-center">
-                
-                {/* Avatar */}
-                <div className="w-24 h-24 mb-4 rounded-full overflow-hidden border-2 border-blue-400">
-                  <img className="block mx-auto"
-                    src={t.img}
-                    alt={t.name}
-                    style={{ width: "30%", height: "30%",textAlign:"center",border:"2px solid green",padding:"2px", borderRadius: "50%", objectFit: "cover" }}
-                  />
-               
+        {/* Pagination Dots */}
+        <div className="d-flex justify-content-center mt-4">
+          <div className="swiper-pagination position-relative"></div>
+        </div>
 
-                {/* Name */}
-                <strong className="block text-xl">{t.name}</strong>
-                
-                {/* Role */}
-                <span className="text-gray-500 mb-4">{ t.role}</span>
-                
-                {/* Testimonial Text */}
-                <p className="text-lg italic">{t.text}</p>
-                 </div>
-              </div>
-            </div>
-          ))}
-        </Slider>
+        {/* Mobile Navigation Buttons */}
+        <div className="d-flex d-lg-none justify-content-center align-items-center mt-4 gap-3">
+          <button
+            className="btn btn-outline-primary rounded-circle"
+            style={{ width: "45px", height: "45px" }}
+            onClick={() => swiperRef.current?.swiper?.slidePrev()}
+          >
+            <i className="fas fa-chevron-left"></i>
+          </button>
+          <button
+            className="btn btn-outline-primary rounded-circle"
+            style={{ width: "45px", height: "45px" }}
+            onClick={() => swiperRef.current?.swiper?.slideNext()}
+          >
+            <i className="fas fa-chevron-right"></i>
+          </button>
+        </div>
       </div>
     </section>
   );
